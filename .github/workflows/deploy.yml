@@ -1,10 +1,10 @@
 name: Deploy to Plesk
 
-# This tells GitHub to run this script every time you push to the 'main' branch
 on:
   push:
     branches:
-      - main 
+      - main
+      - master
 
 jobs:
   deploy:
@@ -17,7 +17,6 @@ jobs:
         host: ${{ secrets.SERVER_IP }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        # This script runs on your Plesk server
         script: |
           # 1. Get the repository name from GitHub (e.g., w3_something)
           REPO_NAME="${{ github.event.repository.name }}"
